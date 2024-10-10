@@ -8,10 +8,10 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.WeldRadProj</groupId>
-	<artifactId>WELD-RADIOGRAPHY-PROJECT</artifactId>
+	<groupId>com.weldradproj</groupId>
+	<artifactId>weld-radiography-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>WELD-RADIOGRAPHY-PROJECT</name>
+	<name>weld-radiography-project</name>
 	<description>WELD RADIOGRAPHY PROJECT</description>
 	<url/>
 	<licenses>

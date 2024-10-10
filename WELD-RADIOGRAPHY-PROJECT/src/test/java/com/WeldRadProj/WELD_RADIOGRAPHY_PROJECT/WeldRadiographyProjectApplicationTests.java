@@ -1,4 +1,4 @@
-package com.WeldRadProj.WELD_RADIOGRAPHY_PROJECT;
+package com.weldradproj.weld_radiography_project;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
