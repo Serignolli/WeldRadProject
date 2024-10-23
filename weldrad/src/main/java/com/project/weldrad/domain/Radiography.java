@@ -9,7 +9,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -50,7 +49,7 @@ public class Radiography {
     @Column(name = "submission_user", nullable = false, length = 50)
     private String submission_user;
 
-    @OneToOne
-    @JoinColumn(name = "report_id", referencedColumnName = "report_id")
-    private String report_id; //Não é string, é tipo Report
+    //Relacionamento com a tabela Report
+    @OneToOne(mappedBy = "radiography")
+    private Report report;
 }

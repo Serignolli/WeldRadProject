@@ -23,7 +23,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Radiography {
+public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,7 +50,8 @@ public class Radiography {
     @Column(name = "submission_user", nullable = false, length = 50)
     private String submission_user;
 
+    //Relacionamento com a tabela Radiography
     @OneToOne
-    @JoinColumn(name = "radiography_id", referencedColumnName = "radiography_id")
-    private String radiography_id; //Não é string, é tipo radiography
+    @JoinColumn(name = "radiography_id", referencedColumnName = "id")
+    private Radiography radiography;
 }
