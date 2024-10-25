@@ -1,9 +1,9 @@
 package com.project.weldrad.domain;
 
 public enum EnumReportStatus {
-    PENDENTE("Radiografia com análise pendente"),
-    APROVADA("Radiografia aprovada"),
-    REPROVADA("Radiografia reprovada");
+    PENDENTE("Laudo com análise pendente"),
+    APROVADA("Laudo aprovado"),
+    REPROVADA("Laudo reprovado");
 
     private String description;
 

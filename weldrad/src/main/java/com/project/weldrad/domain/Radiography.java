@@ -31,23 +31,34 @@ public class Radiography {
     @Column(name = "archive_name", nullable = false, length = 50)
     private String archive_name;
 
-    //BLOB - Mais facilidade?
-    //@Column(name = "archive", nullable = false)
-    //private byte[] archive;
-
-    //Caminho do arquivo - Mais desempenho?
-    @Column(name = "archive", nullable = false, length = 255)
-    private String archive;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private EnumRadiographyStatus status;
+    @Column(name = "archive_path", nullable = false, length = 255)
+    private String archive_path;
 
     @Column(name = "submission_date", nullable = false)
     private LocalDateTime submission_date;
 
     @Column(name = "submission_user", nullable = false, length = 50)
     private String submission_user;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private EnumRadiographyStatus status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false)
+    private EnumType type;
+
+    @Column(name = "description", length = 255)
+    private String description;
+
+    @Column(name = "material", nullable = false, length = 55)
+    private String material;
+
+    @Column(name = "thickness", nullable = false)
+    private int thickness;
+
+    @Column(name = "diameter", nullable = false)
+    private int diameter;
 
     //Relacionamento com a tabela Report
     @OneToOne(mappedBy = "radiography")

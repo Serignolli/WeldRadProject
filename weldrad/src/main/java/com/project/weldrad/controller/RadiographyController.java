@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weldrad.configuration.RadFileProperties;
+import com.project.weldrad.dto.RadiographyDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -43,8 +44,14 @@ public class RadiographyController {
         .normalize();
     }
 
+    //DTO adicionado nos parâmetros, fazer a lógica de passar para a service os valores
+    //+
+    //Fazer as services
+    //+
+    //Controle de Transação???
+    //Continuar com controller de reports
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadFile(@RequestParam RadiographyDTO radiographyDTO, @RequestParam("file") MultipartFile file) {
         //Get archive name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
