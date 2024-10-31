@@ -28,25 +28,21 @@ public class Radiography {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "archive_name", nullable = false, length = 50)
-    private String archive_name;
+    @Column(name = "fileName", nullable = false, length = 50)
+    private String fileName;
 
-    @Column(name = "archive_path", nullable = false, length = 255)
-    private String archive_path;
+    @Column(name = "filePath", nullable = false, length = 255)
+    private String filePath;
 
-    @Column(name = "submission_date", nullable = false)
-    private LocalDateTime submission_date;
+    @Column(name = "submissionDate", nullable = false)
+    private LocalDateTime submissionDate;
 
-    @Column(name = "submission_user", nullable = false, length = 50)
-    private String submission_user;
+    @Column(name = "submissionUser", nullable = false, length = 50)
+    private String submissionUser;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private EnumRadiographyStatus status;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type", nullable = false)
-    private EnumType type;
 
     @Column(name = "description", length = 255)
     private String description;
