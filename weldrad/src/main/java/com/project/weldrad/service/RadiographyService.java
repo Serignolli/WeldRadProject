@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ import com.project.weldrad.domain.Radiography;
 import com.project.weldrad.dto.RadiographyDTO;
 import com.project.weldrad.repository.RadiographyRepository;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Service
@@ -49,6 +51,7 @@ public class RadiographyService {
 
     public String saveUploadFile(MultipartFile file, RadiographyDTO radiographyDTO) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename()); //File name
+
         if (!(fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg"))) {
             throw new IllegalArgumentException("Apenas arquivos PNG e JPG são permitidos.");
         }
@@ -100,5 +103,31 @@ public class RadiographyService {
             .collect(Collectors.toList());
 
         return ResponseEntity.ok(fileNames);
+    }
+
+    public ResponseEntity<String> analisys(Long id) throws IOException {
+        if (!radiographyRepository.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ID não encontrado");
+        }
+    
+        Radiography radiography = radiographyRepository.findById(id).orElseThrow(() ->
+            new EntityNotFoundException("Radiografia não encontrada para o ID: " + id));
+
+        Path relativePath = Paths.get(radiography.getFilePath());
+        Path absolutePath = relativePath.toAbsolutePath();
+        
+        ExternalAPI pythonAPI = new ExternalAPI();
+        
+        String result = pythonAPI.analisysAPI(absolutePath.toString());
+
+        if (result.equals("Com Defeito")) {
+            radiography.setStatus(EnumRadiographyStatus.REPROVADA);
+            return ResponseEntity.ok("REPROVADA");
+        } else if(result.equals("Sem Defeito")) {
+            radiography.setStatus(EnumRadiographyStatus.APROVADA);
+            return ResponseEntity.ok("APROVADA");
+        } else {
+            return ResponseEntity.ok("Houve uma falha na análise.");
+        }
     }
 }

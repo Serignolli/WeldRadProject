@@ -21,7 +21,6 @@ import com.project.weldrad.service.RadiographyService;
 import jakarta.servlet.http.HttpServletRequest;
 
 
-
 @Controller
 @RequestMapping("/api/radiography")
 public class RadiographyController {
@@ -72,4 +71,14 @@ public class RadiographyController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+    @PostMapping("/analisys")
+    public ResponseEntity<String> imageAnalisys(@RequestParam Long id) {
+        try {
+            return radiographyService.analisys(id);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+    
 }
