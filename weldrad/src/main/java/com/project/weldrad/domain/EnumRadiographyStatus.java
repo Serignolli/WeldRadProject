@@ -1,17 +1,23 @@
 package com.project.weldrad.domain;
 
 public enum EnumRadiographyStatus {
-    PENDENTE("Radiografia com análise pendente"),
-    APROVADA("Radiografia aprovada"),
-    REPROVADA("Radiografia reprovada");
+    PENDENTE("Radiografia com análise pendente", EnumReportStatus.PENDENTE),
+    APROVADA("Radiografia aprovada", EnumReportStatus.APROVADA),
+    REPROVADA("Radiografia reprovada", EnumReportStatus.REPROVADA);
 
-    private String description;
+    private final String description;
+    private final EnumReportStatus reportStatus;
 
-    EnumRadiographyStatus(String description){
+    EnumRadiographyStatus(String description, EnumReportStatus reportStatus) {
         this.description = description;
+        this.reportStatus = reportStatus;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
+    }
+
+    public EnumReportStatus toReportStatus() {
+        return reportStatus;
     }
 }
