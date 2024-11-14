@@ -1,14 +1,24 @@
 package com.project.weldrad.service;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.project.weldrad.domain.Radiography;
 import com.project.weldrad.domain.Report;
 import com.project.weldrad.repository.RadiographyRepository;
 import com.project.weldrad.repository.ReportRepository;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class ReportService {
@@ -51,4 +61,32 @@ public class ReportService {
 
         return rep;
     }
+
+    public ResponseEntity<Resource> downloadReport(Long id, HttpServletRequest request) throws IOException {
+        Report rep = reportRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Laudo não encontrado"));
+    
+        String baseDirectory = System.getProperty("user.dir");
+        Path basePath = Paths.get(baseDirectory);
+        Path absolutePath = basePath.resolve(rep.getFilePath()).normalize().toAbsolutePath();
+    
+        if (!absolutePath.startsWith(baseDirectory) || !Files.exists(absolutePath)) {
+            return ResponseEntity.notFound().build();
+        }
+    
+        Resource resource = new UrlResource(absolutePath.toUri());
+        String contentType = Files.probeContentType(absolutePath);
+        if (contentType == null) {
+            contentType = "application/octet-stream";
+        }
+    
+        return ResponseEntity.ok()
+            .contentType(MediaType.parseMediaType(contentType))
+            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+            .header(HttpHeaders.CACHE_CONTROL, "no-cache, no-store, must-revalidate")
+            .header(HttpHeaders.PRAGMA, "no-cache")
+            .header(HttpHeaders.EXPIRES, "0")
+            .body(resource);
+    }
+    
 }

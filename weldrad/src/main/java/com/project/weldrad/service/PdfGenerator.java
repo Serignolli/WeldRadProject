@@ -25,8 +25,6 @@ public class PdfGenerator {
 
         String outputFilePath = "reportsDir/" + rep.getFileName();
 
-        //Path absolutePath = new File(outputFilePath).toPath().toAbsolutePath();
-
         PdfWriter writer = new PdfWriter(new FileOutputStream(outputFilePath));
         PdfDocument pdf = new PdfDocument(writer);
 
