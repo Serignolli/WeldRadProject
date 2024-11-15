@@ -36,7 +36,7 @@ public class ReportService {
         Report report = this.saveReport(radId);
 
         PdfGenerator pdfGenerator = new PdfGenerator();
-        pdfGenerator.generatePDF(report);
+        pdfGenerator.generatePDF(report, reportRepository);
     }
 
     private Report saveReport(Long radId) {
@@ -88,5 +88,4 @@ public class ReportService {
             .header(HttpHeaders.EXPIRES, "0")
             .body(resource);
     }
-    
 }

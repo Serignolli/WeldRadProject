@@ -122,9 +122,11 @@ public class RadiographyService {
 
         if (result.equals("Com Defeito")) {
             radiography.setStatus(EnumRadiographyStatus.REPROVADA);
+            radiographyRepository.save(radiography);
             return ResponseEntity.ok("REPROVADA");
         } else if(result.equals("Sem Defeito")) {
             radiography.setStatus(EnumRadiographyStatus.APROVADA);
+            radiographyRepository.save(radiography);
             return ResponseEntity.ok("APROVADA");
         } else {
             return ResponseEntity.ok("Houve uma falha na análise.");
