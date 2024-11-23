@@ -1,0 +1,15 @@
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\configuration\RadFileProperties.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\controller\RadiographyController.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\controller\ReportController.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\domain\EnumRadiographyStatus.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\domain\EnumReportStatus.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\domain\Radiography.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\domain\Report.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\dto\RadiographyDTO.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\repository\RadiographyRepository.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\repository\ReportRepository.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\service\ExternalAPI.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\service\PdfGenerator.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\service\RadiographyService.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\service\ReportService.java
+c:\Users\xanse\Projetos\WeldRadProject\weldrad\src\main\java\com\project\weldrad\WeldradApplication.java
