@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weldrad.dto.RadiographyDTO;
+import com.project.weldrad.dto.RadiographyListDTO;
 import com.project.weldrad.service.RadiographyService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -64,10 +65,10 @@ public class RadiographyController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<String>> listFile() throws IOException{
+    public ResponseEntity<List<RadiographyListDTO>> listFile() throws IOException{
         try {
             return radiographyService.listFiles();
-        } catch (IOException e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

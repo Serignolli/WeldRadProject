@@ -23,6 +23,7 @@ import com.project.weldrad.configuration.RadFileProperties;
 import com.project.weldrad.domain.EnumRadiographyStatus;
 import com.project.weldrad.domain.Radiography;
 import com.project.weldrad.dto.RadiographyDTO;
+import com.project.weldrad.dto.RadiographyListDTO;
 import com.project.weldrad.repository.RadiographyRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -96,13 +97,26 @@ public class RadiographyService {
             .body(resource);
     }
 
-    public ResponseEntity<List<String>> listFiles() throws IOException {
-        List<String> fileNames = Files.list(fileStorageLocation)
-            .map(Path::getFileName)
-            .map(Path::toString)
+    public ResponseEntity<List<RadiographyListDTO>> listFiles() {
+        List<Radiography> radiographies = radiographyRepository.findAll();
+    
+        List<RadiographyListDTO> result = radiographies.stream()
+            .map(rad -> {
+                RadiographyListDTO dto = new RadiographyListDTO();
+                dto.setId(rad.getId());
+                dto.setFileName(rad.getFileName());
+                dto.setSubmissionDate(rad.getSubmissionDate().toString());
+                dto.setSubmissionUser(rad.getSubmissionUser());
+                dto.setStatus(rad.getStatus().toString());
+                dto.setDescription(rad.getDescription());
+                dto.setMaterial(rad.getMaterial());
+                dto.setThickness(rad.getThickness());
+                dto.setDiameter(rad.getDiameter());
+                return dto;
+            })
             .collect(Collectors.toList());
-
-        return ResponseEntity.ok(fileNames);
+    
+        return ResponseEntity.ok(result);
     }
 
     public ResponseEntity<String> analisys(Long id) throws IOException {
