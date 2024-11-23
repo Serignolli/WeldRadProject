@@ -18,7 +18,7 @@ public class ExternalAPI {
             String json = "{\"image_path\": \"" + imagePath.replace("\\", "/") + "\"}";
 
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("http://localhost:5000/api/analisys"))
+                    .uri(new URI("http://localhost:8000/api/analisys"))
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(json))
                     .build();

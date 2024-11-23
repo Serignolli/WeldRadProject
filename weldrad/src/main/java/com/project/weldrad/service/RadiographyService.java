@@ -65,7 +65,7 @@ public class RadiographyService {
         radiography.setFileName(fileName);
         radiography.setFilePath(targetLocation.toString());
         radiography.setSubmissionDate(LocalDateTime.now());
-        radiography.setSubmissionUser("Joãozinho");
+        radiography.setSubmissionUser("user");
         radiography.setStatus(EnumRadiographyStatus.PENDENTE);
         radiography.setDescription(radiographyDTO.getDescription());
         radiography.setMaterial(radiographyDTO.getMaterial());

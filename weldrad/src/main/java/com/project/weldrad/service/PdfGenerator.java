@@ -56,7 +56,7 @@ public class PdfGenerator {
         Paragraph title1 = new Paragraph("CENTRO UNIVERSITÁRIO SENAC").setFont(titleFont).setFontSize(16).setTextAlignment(TextAlignment.JUSTIFIED);
         document.add(title1);
 
-        Paragraph title2 = new Paragraph("MORDEDORES DE FRONHA").setFont(titleFont).setFontSize(16).setTextAlignment(TextAlignment.JUSTIFIED);
+        Paragraph title2 = new Paragraph("WELDRAD").setFont(titleFont).setFontSize(16).setTextAlignment(TextAlignment.JUSTIFIED);
         document.add(title2);
 
         Paragraph title3 = new Paragraph("LAUDO DA ANÁLISE RADIOGRÁFICA").setFont(titleFont).setFontSize(16).setTextAlignment(TextAlignment.JUSTIFIED);
