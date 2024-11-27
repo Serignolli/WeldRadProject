@@ -14,7 +14,7 @@ O **WELD RADIOGRAPHY PROJECT** é uma aplicação full-stack desenvolvida para a
 ## 🔨 Tecnologias utilizadas
 
 - **Back-end**: Spring Framework (Spring Boot)
-- **Front-end**: React
+- **Front-end**: React [(Link para o front-end)](https://github.com/PatryckSans/weldrad-frontend) 
 - Banco de dados H2 (para armazenamento de dados durante o desenvolvimento)
 - Maven (para gerenciamento de dependências)
 
